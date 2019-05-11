@@ -1,2 +1,27 @@
-<h1>{{ email }}</h1><input type="email" name="email"/>
+<form (ngSubmit)="myForm.valid && onSubmit()" #myForm="ngForm">
 
+    <div>
+        <label for="user-order">Title</label>
+        <input name="user-order" type="text" [(ngModel)]="model.user" #user="ngModel" required minlength="4" maxlength="25">
+    </div>
+          <!-- Messages d'erreurs -->
+    <div *ngIf="user.errors && myForm.submitted">
+        <span *ngIf="user.errors.required">Le champs est requis</span>
+        <span *ngIf="user.errors.minlength">Le champ user doit dépasser 4 caractères</span>
+        <span *ngIf="user.errors.maxlength">Le champ user ne doit pas dépasser 25 caractères</span>
+    </div><br>
+
+    <div>
+        <label for="contact-order">Contact</label>
+        <input name="contact-order" type="text" [(ngModel)]="model.contact" #contact="ngModel" required email>
+    </div>
+          <!-- Messages d'erreurs -->
+    <div *ngIf="contact.errors && myForm.submitted">
+        <span *ngIf="contact.errors.required">Le champs est requis</span>
+        <span *ngIf="contact.errors.email">Le champ email est invalide</span>
+    </div><br>
+
+    <button type="reset">Restaurer</button>
+    <button type="submit">Sauvegarder</button>
+
+</form>
