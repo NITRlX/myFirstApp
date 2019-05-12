@@ -10,7 +10,6 @@ export function minDateValidator(minDate: Date): ValidatorFn {
     } else {
       // 'min' is the error key
       return { 'min': { value: control.value, expected: minDate } };
-
     }
   };
 }
