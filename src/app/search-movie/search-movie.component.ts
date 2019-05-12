@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormArray, FormControl, FormGroup, } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { minDateValidator } from '../min-date.validator';
 
 
 @Component({
@@ -13,13 +12,13 @@ import { minDateValidator } from '../min-date.validator';
 export class SearchMovieComponent implements OnInit {
 
   movieForm = this.fb.group({
-
-      id: new FormControl(''),
-      titre: new FormControl(''),
-
-    type: new FormControl(''),
-    annee: new FormControl(''),
-    fiche: new FormControl(''),
+    type: [''],
+    annee: ['', Validators.required],
+    fiche: [''],
+    name: this.fb.group({
+      id: [''],
+      titre: [''],
+    })
   });
 
   constructor(private fb: FormBuilder) { }

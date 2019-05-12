@@ -1,5 +1,5 @@
-<form (ngSubmit)="movieForm.valid && onSubmit()" [formGroup]="movieForm">
-
+<form (ngSubmit)="onSubmit()" [formGroup]="movieForm">
+  <div formGroupName="name">
     <div>
       <label for="id">Identifiant</label>
       <input name="id" type="text" formControlName="id">
@@ -9,7 +9,8 @@
       <label for="titre">Titre</label>
       <input name="titre" type="text" formControlName="titre">
     </div>
-
+  </div>
+  
   <div>
     <label for="type">Type</label>
     <select name="type" formControlName="type">
